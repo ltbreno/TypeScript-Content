@@ -1,0 +1,200 @@
+/*
+//tipos primitimos ( boolean, string, number )
+let ligado:boolean = false ; 
+let nome:string = "Breno" ;
+let idade:number = 30; // o number tambem permite utilizar valores decimais
+
+//tipos especial null e undefined
+let nulo : null = null
+let indefinido : undefined = undefined
+
+//tipos abrangentes: any e void (void é vazio)
+function executaQuery():void {} // exemplo de void na pratica
+let retornoView:any = false // seria um retorno que nao sabemos oq pode voltar
+
+//objeto
+let produto:object = {  //obrigatoriamente tem que criar um objeto
+    name:"breno",
+    cidade:"jp",
+    idade: 20
+};
+
+type ProdutoLoja = {
+    nome:string;
+    preco: number;
+    unidades: number;
+}
+
+let meuProduto: ProdutoLoja = {
+    nome: "carro",
+    preco: 71000 ,
+    unidades: 3
+}
+
+//arrays
+
+let dados:string[] = ["breno", "susi", "thayna"] // uma maneira de Array
+
+let infos: (string | number)[] = ["breno" , 20] //Exemplo de Multi Types em Array
+
+//Tuplas
+let boleto:[string,number,number] = ["breno", 20 , 14022003]
+
+//Arrays métodos sao os mesmos do java script ( length, reduce, map e etc)
+
+//Datas
+let aniversario: Date = new Date("2022-12-01 05:00");
+console.log(aniversario.toString())
+
+//type heroi = { name: string ; vulgo: string;    }
+
+//function printaObjetos(pessoa: heroi) { console.log(pessoa); }
+// printar objeto
+//printaObjetos({ name: "breno lopes" , vulgo: "batman"}) 
+
+/*funções
+function addNumber(x:number,y:number):number {
+    return x + y
+}
+
+function addToHello(name: string):string{
+    return `hello ${name}`;
+}
+
+function CallToPhone(phone: number | string): number | string {
+    return phone;
+}
+//função assincrona ( podemos pedir pra ela esperar alguma coisa)
+async function getDatabase(id:number):Promise<number> {
+    return id;   
+}
+console.log(getDatabase(100))
+
+
+let soma: number = addNumber(8,8);
+console.log(soma)
+console.log(CallToPhone("83998435931")) 
+
+/* type robot = {
+    id:number ;
+    name: string;
+};
+
+const bot: robot = {
+    id: 1,
+    name: "Breno"
+}
+
+/*interfaces (type x interface)]
+type robot = {
+    id:number | string ;
+    name: string;
+};
+
+interface robot2 {
+    readonly id: number | string; // readonly (faz com que o usuario nao possa modificar
+    name: string;
+    sayHello():string;
+}
+
+const bot1: robot = {
+    id:1,
+    name:"Breno"
+}
+
+const bot2: robot2 = {
+    id: 1,
+    name: "Breno",
+    sayHello: function (): string {
+        throw new Error("Function not implemented.");
+    }
+}
+
+console.log(bot1 , bot2)
+
+class Pessoa implements robot2 {
+    id: string | number;
+    name: string;
+
+    constructor(id:string | number ,name:string) {
+        this.id = id
+        this.name = name
+    }
+    sayHello(): string {
+        return "hello"
+    }
+}
+
+const p = new Pessoa(20, "Breno")
+console.log(p.sayHello())
+
+//clases
+
+/*
+    data modifiers
+    public
+    private
+    protected
+
+//protected aonde a classe e as suas subclasses conseguem enxergar 
+class Character { // (?) utilizado para alguma propriedade que nao é obrigatorio //
+    protected name: string; //Name? usado para talvez //private so pode ser acessado dentro da classe e o public é o default
+    stregth: number;
+    skill: number;
+
+    constructor(name:string, stregth:number,skill:number) {
+        this.name = name ;
+        this.stregth = stregth ;
+        this.skill = skill;
+    }
+
+    attack() : void {
+        console.log(`attack with ${this.stregth}points`)
+    }
+}
+//subclasses
+class Magician extends Character {
+    magicPoints:number
+    constructor(name:string, stregth:number,skill:number, magicPoints:number){
+        super(name, stregth,skill) //super invoca o constructor da classe Pai
+        this.magicPoints = magicPoints // o Super sempre vem antes!
+    }
+}
+
+const p1 = new Character ("Breno",10,98);
+const p2 = new Magician ("Mago",10,30,50);
+console.log(p2)
+
+/* generics
+function concatArray<T>(...itens: T[]):T[]{ //Voltar oq for selecionado dentro da Constante
+    return new Array().concat(...itens); // ...( o spreed diz que aceita varios itens num Array 
+// transformando tudo em array)
+}
+const numArray = concatArray(<number[]>[1,5],[3]);
+const sgtArray = concatArray(<string[]>["Breno","Lopes"])
+console.log(sgtArray)
+
+/*decorators 
+function ExibirNome(target:any){
+    console.log(target)
+}
+
+@ExibirNome 
+class Funcionario {
+
+}
+
+/*decorators 
+function apiVersion(version:string) {
+    return(target : any) => {
+        Object.assign(target.prototype, { __version : version});
+    }
+}
+
+@apiVersion("1.10")
+class Api{}
+
+const api = new Api();
+console.log(api.__version)
+
+*/
